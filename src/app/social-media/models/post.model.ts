@@ -1,6 +1,6 @@
-import {yearsPerPage} from "@angular/material/datepicker";
-
+import { Comment } from '../../core/models/comment.model'
 export class Post {
+  
   id!: number;
   userID!: number;
   title!: string;
@@ -9,4 +9,4 @@ export class Post {
   content!: string;
   comments!: Comment[];
 }
-yearsPerPage
+
