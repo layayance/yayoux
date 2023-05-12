@@ -16,4 +16,8 @@ export class PostListItemComponent implements OnInit {
    ngOnInit(): void {
     
   }
+
+  onNewComment(comment:string){
+    console.log(comment)
+  }
 }
