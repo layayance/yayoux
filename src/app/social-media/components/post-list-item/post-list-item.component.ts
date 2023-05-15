@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Post } from '../../models/post.model'
 
 @Component({
@@ -8,16 +8,18 @@ import { Post } from '../../models/post.model'
 })
 
 export class PostListItemComponent implements OnInit {
-  
-  @Input() post!: Post;
-
-  constructor(){}
-
-   ngOnInit(): void {
-    
+  ngOnInit(): void {
+    //throw new Error('Method not implemented.');
   }
 
-  onNewComment(comment:string){
-    console.log(comment)
+  @Input() post!: Post;
+  @Output() postCommented = new EventEmitter<{ comment: string, postId: number }>();
+
+  tempUser = { firstName: 'Yayou', lastName: 'LDX' };
+
+
+
+  onNewComment(comment: string) {
+    this.postCommented.emit({ comment: comment, postId: this.post.id });
   }
 }
