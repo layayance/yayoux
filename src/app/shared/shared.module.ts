@@ -5,6 +5,8 @@ import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { UsernamePipe } from './pipes/usermame.pipe';
+import { timeAgoPipe } from './pipes/time-ago.pipe';
+import { HighlightDirective } from './directives/higlight.directive';
 
 
 
@@ -12,7 +14,9 @@ import { UsernamePipe } from './pipes/usermame.pipe';
   declarations: [
     CommentsComponent,
     ShortenPipe,
-    UsernamePipe
+    UsernamePipe,
+    timeAgoPipe,
+    HighlightDirective
   ],
 
   imports: [
@@ -25,7 +29,9 @@ import { UsernamePipe } from './pipes/usermame.pipe';
     MaterialModule,
     ShortenPipe,
     ShortenPipe,
-    UsernamePipe
+    UsernamePipe,
+    timeAgoPipe,
+    HighlightDirective
   ]
 })
 export class SharedModule { }
