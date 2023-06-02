@@ -1,6 +1,6 @@
 export class Comment{
   id!: number;
-  userId!: string;
+  userId!: number;
   comment!: string;
   createDate!: string;
 }
