@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Comment } from '../../../core/models/comment.model'
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { animate, group, query, sequence, state, style, transition, trigger } from '@angular/animations';
+import { animate, animateChild, group, query, sequence, stagger, state, style, transition, trigger, useAnimation } from '@angular/animations';
+import {flashAnimations} from "../../animations/flash.animations";
+import {slideAndFadeAnimation} from "../../animations/slide-and-fade.animation";
 
 
 @Component({
@@ -9,6 +11,15 @@ import { animate, group, query, sequence, state, style, transition, trigger } fr
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss'],
   animations: [
+    trigger('list',[
+      transition(':enter',[
+        query('@lisItem',[
+          stagger(50, [
+            animateChild()
+          ])
+        ])
+      ])
+    ]),
     trigger('listItem', [
       state('default', style({
         transform: 'scale(1)',
@@ -33,32 +44,26 @@ import { animate, group, query, sequence, state, style, transition, trigger } fr
             opacity: 0
           }),
         ]),
-        style({
-          transform: 'translateX(-100%)',
-          opacity: 0,
-          'background-color': 'red',
+        useAnimation(slideAndFadeAnimation, {
+          params: {
+            time: '1000ms',
+            startColor: 'rgb(244,155,100)'
+          }
         }),
-        animate('250ms ease-out', style({
-          transform: 'translateX(0)',
-          opacity: 1,
-          'background-color': 'white',
-        })),
         group([
-          sequence([
-              animate('250ms', style({
-                  'background-color': 'rgb(255,7,147)'
-              })),
-              animate('250ms', style({
-                  'background-color': 'white'
-              })),
-          ]),
+          useAnimation(flashAnimations, {
+            params: {
+              time: '1000ms',
+              flashColor: 'rgb(249, 179, 111)'
+            }
+          }),
           query('.comment-text', [
-              animate('250ms', style({
+              animate('500ms', style({
                   opacity: 1
               }))
           ]),
           query('.comment-date', [
-              animate('500ms', style({
+              animate('1000ms', style({
                   opacity: 1
               }))
           ]),
