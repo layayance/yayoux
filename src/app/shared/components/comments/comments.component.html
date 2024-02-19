@@ -13,7 +13,9 @@
     [@listItem]="animationStates[i]"
     (mouseenter)="onListItemMouseEnter(i)"
     (mouseleave)="onListItemMouseLeave(i)">
-      <span class="comment-text" mat-line>{{ comment.comment }}</span>
-      <span class="comment-date" mat-line>{{ comment.createDate | timeAgo}}</span>
+      <div class="comment">
+        <span class="comment-text" mat-line>{{ comment.comment }}</span>
+        <span class="comment-date" mat-line>{{ comment.createDate | timeAgo}}</span>
+      </div>
     </mat-list-item>
  </mat-list>

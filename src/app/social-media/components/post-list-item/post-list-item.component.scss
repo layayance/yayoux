@@ -1,7 +1,21 @@
 mat-card {
-    margin-bottom: 20px;
-  }
-  
-  .post-content {
-    margin-top: 10px;
-  }
+  margin-bottom: 20px;
+}
+
+.auteur{
+  display: flex;
+  flex-direction: column;
+}
+.auteur-date{
+  font-size: 12px;
+  font-style: italic;
+}
+
+.post{
+  display: flex;
+  flex-direction: column;
+}
+
+.post-content {
+  margin-top: 10px;
+}
