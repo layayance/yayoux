@@ -192,6 +192,60 @@
         "confirmPassword": "moihsdgf"
       },
       "id": 4
+    },
+    {
+      "personalInfo": {
+        "firstName": "Thomas",
+        "lastName": "Laudd"
+      },
+      "contactPreference": "email",
+      "email": {
+        "email": "lauucbc@hot.fr",
+        "confirm": "lauucbc@hot.fr"
+      },
+      "phone": "",
+      "loginInfo": {
+        "username": "qdscs",
+        "password": "123456",
+        "confirmPassword": "123123"
+      },
+      "id": 5
+    },
+    {
+      "personalInfo": {
+        "firstName": "Tataa",
+        "lastName": "Fouhb"
+      },
+      "contactPreference": "phone",
+      "email": {
+        "email": "lae@yahoo.com",
+        "confirm": "lae@yahoo.com"
+      },
+      "phone": "0601020304",
+      "loginInfo": {
+        "username": "Youyou",
+        "password": "youyou12",
+        "confirmPassword": "youyou12"
+      },
+      "id": 6
+    },
+    {
+      "personalInfo": {
+        "firstName": "YAYA",
+        "lastName": "GDGCDH"
+      },
+      "contactPreference": "phone",
+      "email": {
+        "email": "uduidid@mail.com",
+        "confirm": "uduidid@mail.com"
+      },
+      "phone": "0601020304",
+      "loginInfo": {
+        "username": "cjjxcjj",
+        "password": "123456",
+        "confirmPassword": "123456"
+      },
+      "id": 7
     }
   ],
   "candidates": [
