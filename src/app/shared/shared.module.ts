@@ -27,7 +27,7 @@ import { HighlightDirective } from './directives/higlight.directive';
   exports: [
     CommentsComponent,
     MaterialModule,
-    ShortenPipe,
+    ReactiveFormsModule,
     ShortenPipe,
     UsernamePipe,
     timeAgoPipe,
