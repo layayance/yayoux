@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable, switchMap} from "rxjs";
+import {Observable, switchMap, take, tap} from "rxjs";
 import {Candidate} from "../../models/candidate.model";
 import {CandidatesService} from "../../service/candidates.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -27,10 +27,22 @@ export class SingleCandidateComponent implements OnInit{
   }
 
   onHire() {
-
+    this.candidate$.pipe(
+      take(1),
+      tap(candidate => {
+        this.candidatesService.hireCandidate(candidate.id);
+        this.onGoBack();
+      })
+    ).subscribe();
   }
-  onRefuse(){
-
+  onRefuse() {
+    this.candidate$.pipe(
+      take(1),
+      tap(candidate => {
+        this.candidatesService.refuseCandidate(candidate.id);
+        this.onGoBack();
+      })
+    ).subscribe();
   }
   onGoBack() {
     this.router.navigateByUrl('/reactive-state/candidates');
