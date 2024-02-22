@@ -11,9 +11,9 @@ import {slideAndFadeAnimation} from "../../animations/slide-and-fade.animation";
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss'],
   animations: [
-    trigger('list',[
+    trigger('List',[
       transition(':enter',[
-        query('@lisItem',[
+        query('@listItem',[
           stagger(50, [
             animateChild()
           ])
