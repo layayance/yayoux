@@ -1,11 +1,13 @@
 <div class="comments-row">
-    <mat-form-field >
-        <input type="text" matInput placeholder="Laissez un commentaire" [formControl]="commentCtrl">
-    </mat-form-field>
-    <button mat-icon-button color="primary" (click)="onLeaveComment()">
-        <mat-icon>send</mat-icon>
-     </button>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Laissez un commentaire" [formControl]="commentCtrl">
+  </mat-form-field>
+  <div *ngIf="commentCtrl.invalid && commentCtrl.dirty" class="error-message">Le commentaire doit comporter au moins {{ minCommentLength }} caractères.</div>
+  <button mat-icon-button color="primary" (click)="onLeaveComment()" [disabled]="commentCtrl.invalid || commentCtrl.value.length < minCommentLength">
+    <mat-icon>send</mat-icon>
+  </button>
 </div>
+
 
 <mat-list *ngIf="comments.length" @List>
     <h2 matSubheader>Commentaires</h2>

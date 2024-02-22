@@ -81,20 +81,27 @@ export class CommentsComponent implements OnInit {
 
   commentCtrl!: FormControl;
   animationStates: { [key: number]: 'default' | 'active' } = {};
+  minCommentLength = 10;
+  errorMessage = '';
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.commentCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(10)]);
+    this.commentCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(this.minCommentLength)]);
     for (let index in this.comments) {
-      this.animationStates[index] = 'default';
+      this.animationStates[index] = "default";
     }
   }
-
   onLeaveComment() {
     if (this.commentCtrl.invalid) {
+      if (this.commentCtrl.errors?.["minlength"]) {
+        this.errorMessage = "Le commentaire doit comporter au moins ${this.minCommentLength} caractères.";
+      } else {
+        this.errorMessage = "Le commentaire est requis.";
+      }
       return;
     }
+    this.errorMessage = '';
     const maxId = Math.max(...this.comments.map(comment => comment.id));
     this.comments.unshift({
       id: maxId + 1,
@@ -104,19 +111,14 @@ export class CommentsComponent implements OnInit {
     });
     this.newComment.emit(this.commentCtrl.value);
     this.commentCtrl.reset();
-
-    // console.log("dddd");
-    // this.newComment.emit(this.commentCtrl.value);
-    // console.log("dddd2");
-    // this.commentCtrl.reset();
-    // console.log("dddd3");
   }
 
+
   onListItemMouseEnter(index: number) {
-    this.animationStates[index] = 'active';
+    this.animationStates[index] = "active";
   }
 
   onListItemMouseLeave(index: number) {
-    this.animationStates[index] = 'default';
+    this.animationStates[index] = "default";
   }
 }
